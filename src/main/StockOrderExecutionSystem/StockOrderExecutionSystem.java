@@ -7,27 +7,27 @@ public class StockOrderExecutionSystem
     public static void main(String[] args)
     {
         Scanner kb = new Scanner(System.in);
-        HashMap<String, CompanyStock> companyStockMap = new HashMap<>();
-        ArrayList<StockOrderOutput> stockOrderOutputList = new ArrayList<>();
-        int readInput = 1;
-        while(readInput == 1)
+        StockManagement stockManagementObj = new StockManagement();
+	while(true)
         {
             StockOrderInput[] inputStockOrderArray = getValidInputForStockOrderArray(kb);
             for (int i = 0; i < inputStockOrderArray.length; i++)
             {
                 StockOrderInput currentStock = inputStockOrderArray[i];
-                CompanyStock currentCompanyStock = CompanyStock.updateCompanyRemainingStock(companyStockMap, currentStock);
-                StockOrderOutput.updateStockOrderOutputList(stockOrderOutputList, currentStock, currentCompanyStock);
+                CompanyStock currentCompanyStock = stockManagementObj.updateCompanyRemainingStock(currentStock);
+                stockManagementObj.updateStockOrderOutputList(currentStock, currentCompanyStock);
             }
-            StockOrderOutput.printStockOrderOutputList(stockOrderOutputList);
+            stockManagementObj.printStockOrderOutputList();
             System.out.println("To continue enter 1");
-            readInput = kb.nextInt();
+            if(kb.nextInt() != 1)
+            {
+                break;
+            }
         }
         System.out.println("Press 1 to view the integrity check");
-        readInput = kb.nextInt();
-        if(readInput == 1)
+        if(kb.nextInt() == 1)
         {
-            integrityCheckForCompanyStock(companyStockMap);
+            integrityCheckForCompanyStock(stockManagementObj.companyStockMap);
         }
     }
 
@@ -65,9 +65,9 @@ public class StockOrderExecutionSystem
     private static StockOrderInput[] getValidInputForStockOrderArray(Scanner kb)
     {
         System.out.println("Enter number of stock orders you are going to enter now");
-        int total_no_of_stocks = kb.nextInt();
-        StockOrderInput[] inputStockOrderArray = new StockOrderInput[total_no_of_stocks];
-        for(int i = 0; i < total_no_of_stocks; i++)
+        int totalNoOfStocks = kb.nextInt();
+        StockOrderInput[] inputStockOrderArray = new StockOrderInput[totalNoOfStocks];
+        for(int i = 0; i < totalNoOfStocks; i++)
         {
             System.out.println("Please enter a valid input for Side(BUY/SELL),Company Name, total no of quantities with comma seperated for stock number " + (i+1));
             String[] inputArr = getinputStockOrderArray(kb);
