@@ -43,7 +43,6 @@ class StockManagement
         stockOrderOutputList.add(outputForCurrentStockObj);
     }
 
-    //This method will create and return the stock object for the current input stock value.
     private StockOrderOutput getNewCurrentStockObj(StockOrderInput currentStock, String side, int currentActionQuantity) {
         StockOrderOutput outputForCurrentStockObj = new StockOrderOutput(side, currentStock.getCompanyName(), currentStock.getQuantity());
         if(currentActionQuantity > 0)
@@ -58,13 +57,11 @@ class StockManagement
     }
 
 
-    //This method is used to set remaining quantity and status in stock output order -- THIS METHOD IS WRITTEN TO AVOID CODE DUPLICATION.
     private void setStatusAndRemainingQuantityForStockOutputOrder(StockOrderOutput outputForCurrentStockObj, String status, int remainingQuantity) {
         outputForCurrentStockObj.setStatus(status);
         outputForCurrentStockObj.setRemainingQuantity(remainingQuantity);
     }
 
-   //This method is used to print the overall stock order from the first input to current.
     public void printStockOrderOutputList()
     {
         System.out.println("Side \t CName \t quantity \t Remining Quantity \t Status \t");
