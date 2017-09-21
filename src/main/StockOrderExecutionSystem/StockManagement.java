@@ -66,13 +66,12 @@ class StockManagement
 
     public void printStockOrderOutputList()
     {
-        System.out.println("Side \t CName \t quantity \t Remining Quantity \t Status \t");
+        System.out.println("Side \t\t CName \t\t quantity \t Remining Quantity \t Status \t");
         for(int i = 0; i < stockOrderOutputList.size(); i++)
         {
             StockOrderOutput outputObj = stockOrderOutputList.get(i);
             String side = outputObj.getSide();
-            String small_space_for_output = side.equalsIgnoreCase("BUY") ? "\t\t" : "\t";
-            System.out.println(side + small_space_for_output + outputObj.getCompanyName() + "\t\t " + outputObj.getQuantity() + "\t\t\t\t" + outputObj.getRemainingQuantity() + "\t\t\t\t " + outputObj.getStatus());
+            System.out.println(side + "\t\t " + outputObj.getCompanyName() + "\t\t " + outputObj.getQuantity() + "\t\t\t\t" + outputObj.getRemainingQuantity() + "\t\t\t " + outputObj.getStatus());
         }
     }
 
