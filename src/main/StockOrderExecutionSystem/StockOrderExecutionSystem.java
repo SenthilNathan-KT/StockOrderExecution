@@ -71,18 +71,15 @@ public class StockOrderExecutionSystem
         {
             System.out.println("Please enter a valid input for Side(BUY/SELL),Company Name, total no of quantities with comma seperated for stock number " + (i+1));
             String[] inputArr = getinputStockOrderArray(kb);
-            boolean canSkip = false;
-            while(!canSkip)
+            
+            while(true)
             {
+		boolean canSkip = true; // If canSkip is false, then invalid entry for input. So, need to get the input again.
                 String side = inputArr[0];
                 if(!(side.equalsIgnoreCase("BUY") || side.equalsIgnoreCase("SELL")))
                 {
                     canSkip = false;
                     System.out.println("Enter valid Side");
-                }
-                else
-                {
-                    canSkip= true;
                 }
                 String companyName = inputArr[1];
                 String value = inputArr[2];
@@ -92,7 +89,6 @@ public class StockOrderExecutionSystem
                     try
                     {
                         quantity = Integer.parseInt(value);
-                        canSkip = true;
                     }
                     catch (Exception e)
                     {
