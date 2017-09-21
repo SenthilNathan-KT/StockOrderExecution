@@ -43,7 +43,8 @@ class StockManagement
         stockOrderOutputList.add(outputForCurrentStockObj);
     }
 
-    private StockOrderOutput getNewCurrentStockObj(StockOrderInput currentStock, String side, int currentActionQuantity) {
+    private StockOrderOutput getNewCurrentStockObj(StockOrderInput currentStock, String side, int currentActionQuantity) 
+    {
         StockOrderOutput outputForCurrentStockObj = new StockOrderOutput(side, currentStock.getCompanyName(), currentStock.getQuantity());
         if(currentActionQuantity > 0)
         {
@@ -57,7 +58,8 @@ class StockManagement
     }
 
 
-    private void setStatusAndRemainingQuantityForStockOutputOrder(StockOrderOutput outputForCurrentStockObj, String status, int remainingQuantity) {
+    private void setStatusAndRemainingQuantityForStockOutputOrder(StockOrderOutput outputForCurrentStockObj, String status, int remainingQuantity) 
+    {
         outputForCurrentStockObj.setStatus(status);
         outputForCurrentStockObj.setRemainingQuantity(remainingQuantity);
     }
